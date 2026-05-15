@@ -1,0 +1,139 @@
+.order-section {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff8e7;
+  border-radius: 18px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.order-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #7a4c00;
+}
+
+.egg-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.egg-form input,
+.egg-form select,
+.egg-form textarea {
+  padding: 14px;
+  border: 2px solid #e0c27d;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.egg-form button {
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background: #ffb400;
+}
+.egg-form button:hover {
+  background: #ffa000;
+  cursor: pointer;
+}
+.egg-form button:active {
+  background: #e59400;
+}
+.Index.html button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  background: #ffb400;
+  font-size: 1.2rem;
+}
+.Index.html button:hover {
+  background: #ffa000;
+  cursor: pointer;
+}
+.Index.html button:active {
+  background: #e59400;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fff8e7, #ffe7a3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    color: #5c3b00;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #7a4c00;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+
+p {
+    max-width: 800px;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    background: rgba(255,255,255,0.7);
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+button {
+    padding: 16px 40px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 14px;
+    background: #ffb400;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+        padding: 20px;
+    }
+
+    button {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+.Dozen {
+    font-size: 1 rem;
+    color: #7a4c00;
+    margin-top: 20px;
+}
