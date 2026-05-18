@@ -5,13 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Forms</title>
+
+    <style>
+      .product-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .product-option {
+        min-width: 220px;
+      }
+
+      input[type="number"] {
+        width: 100px;
+      }
+    </style>
 </head>
+
 <body>
-  <h1>Pick Up at 31870 240th street!</h1>
-  <button onclick="window.location.href='Index.html'">Home</button>
+  <h1>Pick Up at 31870 240th St Gallatin, MO 64640!</h1>
+
+  <button onclick="window.location.href='Index.html'">
+    Home
+  </button>
 
   <section class="order-section">
-    <h2>Order Fresh Eggs, Apples, and Mole Berries</h2>
+    <h2>Order Fresh Eggs, Apples, and MullBerries</h2>
 
     <form
       action="https://formspree.io/f/xvzlnbgp"
@@ -19,6 +40,7 @@
       class="egg-form"
       id="orderForm"
     >
+
       <input
         type="text"
         name="name"
@@ -43,75 +65,123 @@
       <fieldset class="product-fieldset">
         <legend>Select Products</legend>
 
-        <label class="product-option">
-          <input type="checkbox" id="apples" name="products" value="Apples">
-          Apples (up to 15)
-        </label>
-        <input
-          type="number"
-          id="apples_qty"
-          name="apples_quantity"
-          placeholder="How many apples?"
-          min="1"
-          max="15"
-          disabled
-        />
+        <!-- Apples -->
+        <div class="product-row">
+          <label class="product-option">
+            <input
+              type="checkbox"
+              id="apples"
+              name="products"
+              value="Apples"
+            >
+            Apples (up to 15)
+          </label>
 
-        <label class="product-option">
-          <input type="checkbox" id="moleberries" name="products" value="Mole Berries">
-          Mole Berries (up to 30)
-        </label>
-        <input
-          type="number"
-          id="moleberries_qty"
-          name="moleberries_quantity"
-          placeholder="How many mole berries?"
-          min="1"
-          max="30"
-          disabled
-        />
+          <input
+            type="number"
+            id="apples_qty"
+            name="apples_quantity"
+            placeholder="Qty"
+            min="1"
+            max="15"
+            disabled
+          />
+        </div>
 
-        <label class="product-option">
-          <input type="checkbox" id="eggs" name="products" value="Chicken Eggs">
-          Chicken Eggs (up to 5 dozen)
-        </label>
-        <input
-          type="number"
-          id="eggs_qty"
-          name="eggs_dozen_quantity"
-          placeholder="How many dozen eggs?"
-          min="1"
-          max="5"
-          disabled
-        />
+        <!-- MullBerries -->
+        <div class="product-row">
+          <label class="product-option">
+            <input
+              type="checkbox"
+              id="mullberries"
+              name="products"
+              value="MullBerries"
+            >
+            MullBerries (up to 30)
+          </label>
+
+          <input
+            type="number"
+            id="mullberries_qty"
+            name="mullberries_quantity"
+            placeholder="Qty?"
+            min="1"
+            max="30"
+            disabled
+          />
+        </div>
+
+        <!-- Chicken Eggs -->
+        <div class="product-row">
+          <label class="product-option">
+            <input
+              type="checkbox"
+              id="eggs"
+              name="products"
+              value="Chicken Eggs"
+            >
+            Chicken Eggs (up to 5 dozen)
+          </label>
+
+          <input
+            type="number"
+            id="eggs_qty"
+            name="eggs_dozen_quantity"
+            placeholder="Qty?"
+            min="1"
+            max="5"
+            disabled
+          />
+        </div>
+
       </fieldset>
 
-      <button type="submit">Place Order</button>
+      <button type="submit">
+        Place Order
+      </button>
+
     </form>
   </section>
 
   <script>
     const orderForm = document.getElementById('orderForm');
+
     const applesCheckbox = document.getElementById('apples');
-    const moleberriesCheckbox = document.getElementById('moleberries');
+    const mullberriesCheckbox = document.getElementById('mullberries');
     const eggsCheckbox = document.getElementById('eggs');
+
     const applesQty = document.getElementById('apples_qty');
-    const moleberriesQty = document.getElementById('moleberries_qty');
+    const mullberriesQty = document.getElementById('mullberries_qty');
     const eggsQty = document.getElementById('eggs_qty');
 
     function toggleQuantity(checkbox, quantityInput) {
       quantityInput.disabled = !checkbox.checked;
+
       if (!checkbox.checked) {
         quantityInput.value = '';
       }
     }
 
-    applesCheckbox.addEventListener('change', () => toggleQuantity(applesCheckbox, applesQty));
-    moleberriesCheckbox.addEventListener('change', () => toggleQuantity(moleberriesCheckbox, moleberriesQty));
-    eggsCheckbox.addEventListener('change', () => toggleQuantity(eggsCheckbox, eggsQty));
+    applesCheckbox.addEventListener('change', () => {
+      toggleQuantity(applesCheckbox, applesQty);
+    });
+
+    mullberriesCheckbox.addEventListener('change', () => {
+      toggleQuantity(mullberriesCheckbox, mullberriesQty);
+    });
+
+    eggsCheckbox.addEventListener('change', () => {
+      toggleQuantity(eggsCheckbox, eggsQty);
+    });
 
     orderForm.addEventListener('submit', (event) => {
-      const selectedProducts = [applesCheckbox, moleberriesCheckbox, eggsCheckbox].filter(input => input.checked);
+
+      const selectedProducts = [
+        applesCheckbox,
+        mullberriesCheckbox,
+        eggsCheckbox
+      ].filter(input => input.checked);
+
       if (selectedProducts.length === 0) {
         alert('Please select at least one product to order.');
         event.preventDefault();
@@ -119,24 +189,46 @@
       }
 
       const checks = [
-        { checkbox: applesCheckbox, qty: applesQty, name: 'Apples', max: 15 },
-        { checkbox: moleberriesCheckbox, qty: moleberriesQty, name: 'Mole Berries', max: 30 },
-        { checkbox: eggsCheckbox, qty: eggsQty, name: 'Dozen Eggs', max: 5 }
+        {
+          checkbox: applesCheckbox,
+          qty: applesQty,
+          name: 'Apples',
+          max: 15
+        },
+        {
+          checkbox: mullberriesCheckbox,
+          qty: mullberriesQty,
+          name: 'MullBerries',
+          max: 30
+        },
+        {
+          checkbox: eggsCheckbox,
+          qty: eggsQty,
+          name: 'Chicken Eggs',
+          max: 5
+        }
       ];
 
       for (const item of checks) {
+
         if (!item.checkbox.checked) {
           continue;
         }
 
         const value = Number(item.qty.value);
+
         if (!value || value < 1 || value > item.max) {
-          alert(`Please enter a valid quantity for ${item.name}: 1 to ${item.max}.`);
+          alert(
+            `Please enter a valid quantity for ${item.name}: 1 to ${item.max}.`
+          );
+
           event.preventDefault();
           return;
         }
       }
+
     });
   </script>
+
 </body>
 </html>
